@@ -1,0 +1,29 @@
+server:
+  port: 8090
+spring:
+  ai:
+    mcp:
+      server:
+        enabled: true
+        protocol: STREAMABLE
+        name: mcp-demand-tools
+        version: 0.0.1
+        capabilities:
+          tool: true
+
+# Downstream API config (NO secrets in git)
+downstream:
+  enrich:
+    base-url: "https://api.alpha.enrich.publicissapient.com"
+    demand-path: "/api/core/demand"
+    assumed-role: "DELIVERY"
+
+# Token is injected via environment variable or secret manager
+security:
+  bearer-token-env: ${ENRICH_BEARER_TOKEN}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
