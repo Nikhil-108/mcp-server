@@ -46,4 +46,4 @@ jobs:
             pkill java || true
             
             echo "Starting new app..."
-            nohup java -jar *.jar > app.log 2>&1 &
+            nohup java -jar target/*.jar > app.log 2>&1 &
